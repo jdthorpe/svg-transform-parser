@@ -7,6 +7,8 @@ export type transform = translate | scale | rotate | skewX | skewY | matrix;
 
 export interface translate {
     readonly type: "translate"
+    tx:number;
+    ty:number;
 }
 
 export interface scale {
