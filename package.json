@@ -26,5 +26,6 @@
     "chai": "^2.3.0",
     "mocha": "^2.2.4",
     "pegjs": "^0.8.0"
-  }
+  },
+  "typings": "index.d.ts"
 }
