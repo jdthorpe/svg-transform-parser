@@ -11,8 +11,8 @@ Parse SVG transform in Javascript
 
     var parseSvgTransform = require('svg-transform-parser').parse;
 
-    parseSvgTransform("translate(10,20)");
-    // {translate: {tx: 10, ty: 20}}
+    parseSvgTransform("scale(5) translate(10,20)");
+    // [ {type:"scale", sx: 5}, {type:"translate", tx: 10, ty: 20} ]
 
 ## Compile pegjs
 

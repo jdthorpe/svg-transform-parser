@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "compile": "pegjs parse-svg-transform.pegjs index.js"
+    "compile": "pegjs -o index.js parse-svg-transform.pegjs"
   },
   "repository": {
     "type": "git",
