@@ -1,7 +1,13 @@
 
 export function parse(s:string):transform[];
 
+export { Transform } from "./src/parser";
+
+export function render(t:transform[]):string;
+
 //export parse=parse;
+
+export interface point {x:number, y:number}
 
 export type transform = translate | scale | rotate | skewX | skewY | matrix;
 
@@ -17,20 +23,12 @@ export interface scale {
     sy?:number;
 }
 
-export type rotate = orotate | crotate;
-
-interface orotate { 
-    // rotate about the origin 
-    readonly type: "rotate"
-    angle:number;
-}
-
-interface crotate { 
+export interface rotate { 
     // rotate about another point (c) 
     readonly type: "rotate"
     angle:number;
-    cx:number;
-    cy:number;
+    cx?:number;
+    cy?:number;
 }
 
 export interface skewX {
