@@ -1,5 +1,5 @@
 import { transform, translate , scale , rotate , skewX , skewY , matrix, point } from "../index.d"
-import { Transform } from "./parser"
+import { Transform } from "./transform"
 import { render } from "./render"
 
 export class Matrix {

@@ -1,23 +1,31 @@
-svg-transform-parser
-====================
+# svg-transform-parser
 
-Parse SVG transform in Javascript
+Yet another SVG transform parser.
 
 ## Installation
 
-    npm install svg-transform-parser
+    npm install ya-svg-transform
 
 ## Usage
 
-    var parseSvgTransform = require('svg-transform-parser').parse;
+```javascript
+import { transform } from "ya-svg-transform"
 
-    parseSvgTransform("scale(5) translate(10,20)");
-    // [ {type:"scale", sx: 5}, {type:"translate", tx: 10, ty: 20} ]
+tx = module.transform("rotate(45) scale(2) translate(10,100) matrix(1 2 3 4 5 6)")
 
-## Compile pegjs
+tx.apply( [5, 10] ) 
+> [ 291.32799384885755, 149.9066376115481 ]
 
-    npm run-script compile
+tx.apply({x:5, y:10}) 
+> { x: 291.32799384885755, y: 149.9066376115481 }
 
-## Tests
-  
-    npm test
+tx.render()
+"rotate(45) scale(2) translate(10 100) matrix(1 2 3 4 5 6)"
+
+tx.asMatrix().render()
+> "matrix(4.242640687119285 1.4142135623730954 9.899494936611665 1.4142135623730958 171.1198410471445 128.69343417595167)"
+```
+
+
+* Also plays nice with TypeScript
+

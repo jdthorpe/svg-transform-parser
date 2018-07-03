@@ -1,7 +1,7 @@
 
 export function parse(s:string):transform[];
 
-export { Transform } from "./src/parser";
+export { transform, Transform } from "./src/transform";
 
 export function render(t:transform[]):string;
 
