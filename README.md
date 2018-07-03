@@ -1,4 +1,4 @@
-# svg-transform-parser
+# ya-svg-transform
 
 Yet another SVG transform parser.
 
