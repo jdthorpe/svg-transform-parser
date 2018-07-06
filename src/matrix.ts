@@ -47,8 +47,28 @@ export class Matrix {
         return apply(this,<point>other)
     }
 
+    apply(pt: number[]): number[];
+    apply(pt: point): point;
+    apply(pt: point|number[]): point | number[]{
+        if(pt instanceof Array){
+            return [
+                 this.a * pt[0] + this.c * pt[1] + this.e,
+                 this.b * pt[0] + this.d * pt[1] + this.f,
+            ]
+        }else{
+            return {
+                x: this.a * pt.x + this.c * pt.y + this.e,
+                y: this.b * pt.x + this.d * pt.y + this.f,
+            }
+        }
+    }
+
     render():string{
         return render(this);
+    }
+
+    inverse(): Matrix{
+        return new Matrix(invert(this))
     }
 
 }
@@ -109,17 +129,7 @@ export function invert(x: matrix): matrix{
     var det: number = x.a * x.d - x.b * x.c;
     if(det === 0)
         throw new Error("Matrix is not invertable")
-
-        var a =   x.d / det;
-        var b = - x.b / det;
-
-        var c = - x.c / det;
-        var d =   x.a / det;
-
-        var e = - x.e / ((x.a + x.b));
-        var f = - x.f / ((x.c + x.d));
-
-    return { type: "matrix", a: a, b: b, c: c, d: d, e: e, f: f, }
+    return {type: "matrix", a:x.d/det, b:-x.b/det, c:-x.c/det, d:x.a/det, e: (x.f*x.c - x.e*x.d) / det, f: (x.b*x.e - x.a*x.f) / det }
 }
 
 export function prod(x: matrix,y: matrix): matrix{
