@@ -1,4 +1,4 @@
-import { transform, translate , scale , rotate , skewX , skewY , matrix, point } from "../index.d"
+import { TRANSFORM, translate , scale , rotate , skewX , skewY , matrix, point } from "../index.d"
 import { Transform } from "./transform"
 import { render } from "./render"
 
@@ -75,7 +75,7 @@ export class Matrix {
 
 //-- export function asMatrix(x:transform ): Matrix;
 //-- export function asMatrix(x:transform[] ): Matrix;
-export function transform_to_matrix(x:transform): matrix{
+export function transform_to_matrix(x:TRANSFORM): matrix{
     // http://apike.ca/prog_svg_transform.html 
     var out:matrix = {type: "matrix", a:0, b:0, c:0, d:0, e:0, f:0,};
     switch(x.type){

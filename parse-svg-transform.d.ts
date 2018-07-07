@@ -1,5 +1,5 @@
 
-import { transform } from "./index.d"
+import { TRANSFORM } from "./index.d"
 
-export function parse(s:string):transform[];
+export function parse(s:string):TRANSFORM[];
 

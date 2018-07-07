@@ -1,4 +1,5 @@
 "use strict";
+///<reference path="../index"/>
 Object.defineProperty(exports, "__esModule", { value: true });
 var parse_svg_transform_1 = require("../parse-svg-transform");
 var render_1 = require("./render");

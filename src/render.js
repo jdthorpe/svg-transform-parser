@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function render(x) {
+    if (x instanceof Array)
+        return x.map(_render).join(" ");
+    return _render(x);
+}
+exports.render = render;
+function _render(x) {
     // renders a single transform 
     var args;
     switch (x.type) {
@@ -27,4 +33,3 @@ function render(x) {
     }
     return x.type + "(" + args.join(" ") + ")";
 }
-exports.render = render;

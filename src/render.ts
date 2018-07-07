@@ -1,6 +1,12 @@
-import { transform, translate , scale , rotate , skewX , skewY , matrix } from "../index.d"
+import { TRANSFORM, translate , scale , rotate , skewX , skewY , matrix } from "../index.d"
 
-export function render(x:transform){
+export function render(x:TRANSFORM|TRANSFORM[]):string{
+    if(x instanceof Array)
+        return x.map(_render).join(" ")
+    return _render(x)
+}
+
+function _render(x:TRANSFORM){
 
     // renders a single transform 
 

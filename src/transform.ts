@@ -1,6 +1,6 @@
 
 import { parse } from "../parse-svg-transform";
-import { transform, matrix, point } from "../index.d"
+import { TRANSFORM, matrix, point } from "../index.d"
 import { render } from "./render";
 import { transform_to_matrix, Matrix,  prod, apply }  from "./matrix"
 
@@ -10,8 +10,8 @@ export function transform(x:string):Transform{
 
 export class Transform {
 
-    private transforms: transform[];
-    constructor( x: string | transform[]){
+    private transforms: TRANSFORM[];
+    constructor( x: string | TRANSFORM[]){
         if(x instanceof Array){
             this.transforms = x
         }else{

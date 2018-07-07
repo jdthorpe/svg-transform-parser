@@ -1,15 +1,21 @@
 
-export function parse(s:string):transform[];
+export { Matrix, transform_to_matrix, invert, prod, apply } from "./src/matrix";
 
-export { transform, Transform } from "./src/transform";
+import { Transform } from "./src/transform"
+export { Transform } from "./src/transform"
 
-export function render(t:transform[]):string;
+export function parse(s:string):TRANSFORM[];
+
+
+export function transform(x:string):Transform;
+
+export function render(t:TRANSFORM|TRANSFORM[]):string;
 
 //export parse=parse;
 
 export interface point {x:number, y:number}
 
-export type transform = translate | scale | rotate | skewX | skewY | matrix;
+export type TRANSFORM = translate | scale | rotate | skewX | skewY | matrix;
 
 export interface translate {
     readonly type: "translate"
