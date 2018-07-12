@@ -10,7 +10,7 @@ transforms
   = t:transform ts:( commaWsp+ ti:transform { return ti;})* { 
 		
         if(ts.length) {
-        	console.log("ts: ",ts)
+        	//console.log("ts: ",ts)
     		return [t].concat(ts);
 		}
         return [t];

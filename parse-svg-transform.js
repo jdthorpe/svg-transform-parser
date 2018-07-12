@@ -146,7 +146,7 @@ function peg$parse(input, options) {
       peg$c2 = function(t, ts) { 
       		
               if(ts.length) {
-              	console.log("ts: ",ts)
+              	//console.log("ts: ",ts)
           		return [t].concat(ts);
       		}
               return [t];
