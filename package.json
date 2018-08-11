@@ -1,6 +1,6 @@
 {
   "name": "ya-svg-transform",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Yet another SVG transform parser",
   "main": "index.js",
   "scripts": {
