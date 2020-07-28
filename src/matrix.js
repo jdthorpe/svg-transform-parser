@@ -53,8 +53,8 @@ exports.Matrix = Matrix;
 //-- export function asMatrix(x:transform ): Matrix;
 //-- export function asMatrix(x:transform[] ): Matrix;
 function transform_to_matrix(x) {
-    // http://apike.ca/prog_svg_transform.html 
-    var out = { type: "matrix", a: 0, b: 0, c: 0, d: 0, e: 0, f: 0, };
+    // http://apike.ca/prog_svg_transform.html
+    var out = { type: "matrix", a: 0, b: 0, c: 0, d: 0, e: 0, f: 0 };
     switch (x.type) {
         case "translate":
             out.a = 1;
@@ -67,26 +67,28 @@ function transform_to_matrix(x) {
             out.d = x.sy ? x.sy : x.sx;
             break;
         case "rotate":
-            var a = x.angle;
-            out.a = Math.cos(Math.PI * a / 180);
-            out.c = Math.sin(Math.PI * a / 180);
-            out.b = -Math.sin(Math.PI * a / 180);
-            out.d = Math.cos(Math.PI * a / 180);
+            var a = (Math.PI * x.angle) / 180;
+            out.a = Math.cos(a);
+            out.b = Math.sin(a);
+            out.c = -Math.sin(a);
+            out.d = Math.cos(a);
             if (x.cx !== undefined || x.cy !== undefined) {
-                // https://stackoverflow.com/a/15134993/1519199 
-                out.e = -(x.cx || 0) * Math.cos(Math.PI * a / 180) + (x.cy || 0) * Math.sin(Math.PI * a / 180) + (x.cx || 0);
-                out.f = -(x.cx || 0) * Math.sin(Math.PI * a / 180) - (x.cy || 0) * Math.cos(Math.PI * a / 180) + (x.cy || 0);
+                var cx = x.cx || 0;
+                var cy = x.cy || 0;
+                // https://stackoverflow.com/a/15134993/1519199
+                out.e = -cx * Math.cos(a) + cy * Math.sin(a) + cx;
+                out.f = -cx * Math.sin(a) - cy * Math.cos(a) + cy;
             }
             break;
         case "skewX":
             out.a = 1;
             out.d = 1;
-            out.c = Math.tan(Math.PI * x.angle / 180);
+            out.c = Math.tan((Math.PI * x.angle) / 180);
             break;
         case "skewY":
             out.a = 1;
             out.d = 1;
-            out.b = Math.tan(Math.PI * x.angle / 180);
+            out.b = Math.tan((Math.PI * x.angle) / 180);
             break;
         case "matrix":
             out.a = x.a;
@@ -106,7 +108,15 @@ function invert(x) {
     var det = x.a * x.d - x.b * x.c;
     if (det === 0)
         throw new Error("Matrix is not invertable");
-    return { type: "matrix", a: x.d / det, b: -x.b / det, c: -x.c / det, d: x.a / det, e: (x.f * x.c - x.e * x.d) / det, f: (x.b * x.e - x.a * x.f) / det };
+    return {
+        type: "matrix",
+        a: x.d / det,
+        b: -x.b / det,
+        c: -x.c / det,
+        d: x.a / det,
+        e: (x.f * x.c - x.e * x.d) / det,
+        f: (x.b * x.e - x.a * x.f) / det,
+    };
 }
 exports.invert = invert;
 function prod(x, y) {
@@ -116,7 +126,7 @@ function prod(x, y) {
     var d = x.b * y.c + x.d * y.d;
     var e = x.a * y.e + x.c * y.f + x.e;
     var f = x.b * y.e + x.d * y.f + x.f;
-    return { type: "matrix", a: a, b: b, c: c, d: d, e: e, f: f, };
+    return { type: "matrix", a: a, b: b, c: c, d: d, e: e, f: f };
 }
 exports.prod = prod;
 function apply(x, pt) {
