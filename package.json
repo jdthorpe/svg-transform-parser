@@ -30,6 +30,6 @@
     "mocha": "^2.2.4",
     "peggy": "^2.0.0"
   },
-  "typings": "index.d.ts",
+  "typings": "dist/index.d.ts",
   "dependencies": {}
 }
