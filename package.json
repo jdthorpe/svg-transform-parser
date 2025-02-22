@@ -1,11 +1,11 @@
 {
   "name": "ya-svg-transform",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Yet another SVG transform parser",
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha",
-    "build": "tsc && peggy -o dist/parse-svg-transform.js ./parse-svg-transform.pegjs",
+    "build": "tsc && cp types.d.ts ./dist && peggy -o dist/parse-svg-transform.js ./parse-svg-transform.pegjs",
     "build:watch": "tsc --watch",
     "compile": "peggy -o dist/parse-svg-transform.js ./parse-svg-transform.pegjs"
   },
