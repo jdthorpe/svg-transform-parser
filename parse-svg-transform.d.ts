@@ -1,5 +1,2 @@
-
-import { TRANSFORM } from "./index.d"
-
-export function parse(s:string):TRANSFORM[];
-
+import {TRANSFORM} from "./types";
+export function parse(s: string): TRANSFORM[];

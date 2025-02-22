@@ -1,11 +1,13 @@
 {
   "name": "ya-svg-transform",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Yet another SVG transform parser",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "mocha",
-    "compile": "pegjs -o src/parser.js parse-svg-transform.pegjs"
+    "build": "tsc && peggy -o dist/parse-svg-transform.js ./parse-svg-transform.pegjs",
+    "build:watch": "tsc --watch",
+    "compile": "peggy -o dist/parse-svg-transform.js ./parse-svg-transform.pegjs"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,12 @@
   "bugs": {
     "url": "https://github.com/jdthorpe/svg-transform-parser/issues"
   },
-  "homepage": "https://github.com/jdthorpe/svg-transform-parser",
+  "homepage": "https://github.com/jdthorpe/svg-transform-parser#readme",
   "devDependencies": {
+    "typescript": "5.7.3",
     "chai": "^2.3.0",
     "mocha": "^2.2.4",
-    "pegjs": "^0.8.0"
+    "peggy": "^2.0.0"
   },
   "typings": "index.d.ts",
   "dependencies": {}
