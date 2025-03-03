@@ -3,7 +3,7 @@ import {TRANSFORM, matrix, point} from "../types";
 import {render} from "./render";
 import {transform_to_matrix, Matrix, prod, apply} from "./matrix";
 
-export function transform(x: string): Transform {
+export function transform(x: string | TRANSFORM | TRANSFORM[]): Transform {
   return new Transform(x);
 }
 
